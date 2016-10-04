@@ -1,0 +1,11 @@
+from smartcab.agentLooper import run
+from scipy.optimize import minimize
+from numpy import array
+
+x0 = array([.05, 5, .95])
+bnds = ((0.0001,1), (0.0001,20), (0.0001,20))
+minimizer = minimize(run, x0, bounds = bnds)
+print(minimizer.message)
+best_parameters = minimizer.x
+print 'The best parameters for gamma : {}, decay : {}, epsilon : {}'.format(best_parameters[0],best_parameters[1],best_parameters[2])
+# print 'Run on the best parameters : {}'.format(run(best_parameters))
